@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "466183010673",
+    "project_id": "minni-ae4f7",
+    "storage_bucket": "minni-ae4f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466183010673:android:6a667e68605d275d621ed0",
+        "android_client_info": {
+          "package_name": "com.example.minni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466183010673-s0kthe7ofio61kv0a704pifmup1tku99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADWD2kNgBOVkU5dRhMCgMgylk1YDIYVt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466183010673-s0kthe7ofio61kv0a704pifmup1tku99.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
