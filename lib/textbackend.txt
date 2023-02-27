@@ -1,0 +1,65 @@
+//packages
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+//Create a class for your Firebase backend, and define the methods that you need for authentication.
+
+class FirebaseBackend {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+
+    // Create a new credential
+    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await _auth.signInWithCredential(credential);
+  }
+
+  Future<UserCredential> signInWithEmailAndPassword(
+      String email, String password) async {
+    return await _auth.signInWithEmailAndPassword(
+        email: email, password: password);
+  }
+
+  Future<UserCredential> createUserWithEmailAndPassword(
+      String email, String password) async {
+    return await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
+  }
+
+  Future<void> signOut() async {
+    await _auth.signOut();
+    await _googleSignIn.signOut();
+  }
+}
+
+
+
+//create an instance of your FirebaseBackend class and use its methods for authentication:
+
+
+
+final FirebaseBackend firebaseBackend = FirebaseBackend();
+
+// Sign in with Google
+UserCredential userCredential = await firebaseBackend.signInWithGoogle();
+
+// Sign in with email and password
+UserCredential userCredential = await firebaseBackend.signInWithEmailAndPassword(email, password);
+
+// Create a new user with email and password
+UserCredential userCredential = await firebaseBackend.createUserWithEmailAndPassword(email, password);
+
+// Sign out
+await firebaseBackend.signOut();
